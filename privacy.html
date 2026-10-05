@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!-- privacy.html — plain, readable legal page. Accent: same as home for family feel. -->
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy Policy — PixelForge</title>
+<meta property="og:title" content="Privacy Policy — PixelForge">
+<meta property="og:description" content="Professional portfolio and business website builder.">
+<meta property="og:image" content="https://your-domain.com/assets/og-image.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A0A0F">
+<link rel="canonical" href="https://your-domain.com/privacy.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --accent:#10E372; --accent-2:#0B9B4F;
+  --bg:#1E1E24; --surface:#25262C; --surface-2:#2D2E35;
+  --text:#F9FAFB; --muted:#9CA3AF; --border:rgba(255,255,255,0.06);
+  --r:14px; --r-pill:999px; --pad:clamp(16px,4vw,32px); --maxw:720px; --tap:48px;
+  --f-display:'Space Grotesk',system-ui,sans-serif; --f-body:'Inter',system-ui,sans-serif;
+  --tabh:66px; --safe:env(safe-area-inset-bottom,0px);
+}
+[data-theme="light"]{
+  --accent:#10E372; --accent-2:#0B9B4F;--bg:#FAFAFB;--surface:#FFFFFF;--surface-2:#F3F4F6;--text:#111827;--muted:#6B7280;--border:rgba(0,0,0,0.08)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:16px;line-height:1.75}
+body.has-tabs{padding-bottom:calc(var(--tabh) + var(--safe))}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+h1,h2{font-family:var(--f-display);font-weight:600;letter-spacing:-.02em}
+h1{font-size:clamp(1.7rem,4.4vw,2.2rem);margin:0 0 6px}
+h2{font-size:1.1rem;margin:34px 0 10px}
+p,li{color:var(--muted);margin:0 0 12px}
+.wrap{width:min(100% - 2*var(--pad), 1120px);margin-inline:auto;padding:clamp(30px,6vw,56px) 0}
+.updated{color:var(--muted);font-size:.85rem;margin-bottom:26px}
+
+.pf-footer{border-top:1px solid var(--border);margin-top:20px}
+.foot-inner{width:min(100% - 2*var(--pad),1120px);margin-inline:auto;display:grid;grid-template-columns:1.3fr 2fr;gap:36px;padding:48px 0 30px}
+.foot-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.foot-h{font-size:.8rem;margin:0 0 12px;font-family:var(--f-display);color:var(--text)}
+.foot-muted{display:block;color:var(--muted);font-size:.89rem;padding:6px 0;text-decoration:none}
+.foot-line{color:var(--muted);font-size:.89rem;margin:12px 0 16px;max-width:32ch}
+.socials{display:flex;gap:8px;flex-wrap:wrap}
+.soc{width:38px;height:38px;display:grid !important;place-items:center;border-radius:10px;background:var(--surface-2);border:1px solid var(--border);color:var(--muted);padding:0 !important}
+.soc:hover{color:var(--accent);border-color:var(--accent)}
+.foot-bottom{width:min(100% - 2*var(--pad),1120px);margin-inline:auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:18px 0 28px;border-top:1px solid var(--border);color:var(--muted);font-size:.83rem}
+.foot-bottom a{color:var(--muted);text-decoration:none}
+.foot-bottom a:hover{color:var(--accent)}
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:95;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#05130C;background:#25D366}
+.wa-tip{position:absolute;right:62px;white-space:nowrap;background:var(--surface);color:var(--text);border:1px solid var(--border);padding:7px 12px;border-radius:9px;font-size:.81rem;opacity:0;pointer-events:none;transition:opacity .2s}
+.wa-float:hover .wa-tip{opacity:1}
+
+@media (max-width:1000px){.foot-inner{grid-template-columns:1fr;gap:28px}}
+@media (max-width:767px){.foot-cols{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.foot-cols{grid-template-columns:1fr}}
+
+  /* Social Media Neon Hovers */
+  .soc, .soc2, .wa-float {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, color 0.3s ease, background 0.3s ease !important;
+  }
+  .soc:hover, .soc2:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.5), 0 0 25px rgba(0, 255, 102, 0.3) !important;
+    border-color: #00FF66 !important;
+    color: #00FF66 !important;
+    background: #000000 !important; /* Dark background to make neon pop */
+    transform: translateY(-4px) !important;
+  }
+  .wa-float:hover {
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.8), 0 0 40px rgba(37, 211, 102, 0.6) !important;
+    transform: scale(1.12) !important;
+  }
+
+
+</style>
+
+<style id="custom-theme-overrides">
+
+
+  /* Missing Base CSS Fixes for Pages (Buttons & Links) */
+  .foot-bottom a { text-decoration: none !important; }
+
+
+
+  /* Premium Dark Blue Navbar */
+
+  /* Universal Light Mode (Clean & Cohesive) */
+  html[data-theme="light"] {
+    --bg: #E2E8F0; /* Soft, clean slate-50 background uniformly across all pages */
+    --surface: #FFFFFF;
+    --surface-2: #F1F5F9;
+    --text: #0F172A;
+    --muted: #475569;
+    --border: rgba(15,23,42,0.12);
+    --accent: #2563EB; /* Royal Blue */
+    --accent-2: #38BDF8; /* Bright Sky Blue */
+  }
+
+  /* Typography */
+  body {
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 1.02rem;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+    color: #020617;
+  }
+
+  /* Elegant Cards */
+  .card { 
+    background: #FFFFFF;
+    border: 1px solid rgba(15,23,42,0.1);
+    box-shadow: 0 8px 24px -6px rgba(0,0,0,0.08), 0 4px 10px -4px rgba(0,0,0,0.04); 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Cohesive "Neon" Blue/Cyan Hovers */
+  .card:hover {
+    box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.12);
+    border-color: rgba(37, 99, 235, 0.2);
+    transform: translateY(-4px);
+  }
+  
+  /* Text Links & Social Icons */
+  .soc, .soc2, .wa-float { transition: all 0.3s ease; }
+  .soc:hover, .soc2:hover {
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+    border-color: #2563EB;
+    color: #FFFFFF;
+    background: #2563EB;
+    transform: translateY(-3px);
+  }
+  .wa-float { background: #25D366; color: #FFFFFF; border: none; }
+  .wa-float:hover {
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+    transform: scale(1.1);
+  }
+
+  /* Visibility Fixes for Dark Text on Blue Backgrounds */
+  .avatar { color: #FFFFFF !important; }
+  .fstep .n { color: #FFFFFF !important; }
+  ::selection { background: #2563EB !important; color: #FFFFFF !important; }
+
+
+  /* Footer Links Attractive Hover Effect */
+  .foot-cols a {
+    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  .foot-cols a:hover {
+    color: var(--accent) !important;
+    transform: translateX(6px);
+    text-shadow: 0 0 12px rgba(37, 99, 235, 0.25);
+  }
+
+</style>
+
+<style id="footer-layout-fix">
+
+.foot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; }
+.foot-cols { display: flex; gap: 32px; }
+@media(max-width: 768px) { .foot-inner { flex-direction: column; } }
+
+</style>
+
+<style id="super-neon-fix">
+
+.soc, .soc2, .wa-float {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.soc:hover, .soc2:hover {
+  background: #00FF66 !important;
+  color: #000000 !important;
+  border: 3px solid #00FF66 !important;
+  box-shadow: 0 0 15px rgba(0,255,102,0.6), 0 0 30px rgba(0,255,102,0.4) !important;
+  transform: translateY(-5px) scale(1.15) !important;
+}
+.wa-float:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 20px rgba(37,211,102,0.8), 0 0 40px rgba(37,211,102,0.6) !important;
+}
+
+</style>
+  <link rel="stylesheet" href="assets/navbar.css?v=2">
+</head>
+<body>
+<main>
+  <div class="wrap">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: September 2026</p>
+
+    <p>This page explains what we do with your information when you get a website built by PixelForge. Simple language — no legal jargon.</p>
+
+    <h2>What we collect</h2>
+    <p>When you fill the order form: your name, email, WhatsApp number, city, portfolio details (bio, skills, projects, social links), and your CV/resume and profile photo if provided.</p>
+
+    <h2>Why we collect this</h2>
+    <p>For one reason only — to build your website. Your bio, skills, and photo are directly used in your portfolio website. Contact details are used to send you your demo and updates.</p>
+
+    <h2>Do we share your data?</h2>
+    <p>No. Your data is not shared with any third-party marketing companies, advertisers, or other clients. Only our team, who is building your website, has access to it.</p>
+
+    <h2>Where is the data stored</h2>
+    <p>Your data is stored securely on Supabase (a cloud database) with row-level security — meaning no one but admins can see your complete details.</p>
+
+    <h2>How to request deletion</h2>
+    <p>After your website is live, if you want us to delete your CV, photo, or any other data, just let us know on WhatsApp — we will delete it within 48 hours.</p>
+
+    <h2>Cookies</h2>
+    <p>We only save essential things — like your theme (dark/light) preference in your browser's local storage. We do not use any tracking or advertising cookies.</p>
+
+    <h2>Questions?</h2>
+    <p>If you have any confusion, just ask us directly on WhatsApp or email — we'll be happy to answer.</p>
+  </div>
+</main>
+<script type="module" src="./legal.js" defer></script>
+</body>
+</html>

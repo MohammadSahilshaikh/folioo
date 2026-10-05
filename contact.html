@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact - PixelForge</title>
+<meta name="description" content="Contact us via WhatsApp, email, or form. Reply usually within 30 minutes.">
+<meta name="theme-color" content="#E2E8F0">
+<link rel="canonical" href="https://your-domain.com/contact.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* Universal Light Mode (Clean & Cohesive) */
+:root, html[data-theme="light"] {
+  --bg: #E2E8F0;
+  --surface: #FFFFFF;
+  --surface-2: #F1F5F9;
+  --text: #0F172A;
+  --muted: #475569;
+  --border: rgba(15,23,42,0.12);
+  --accent: #2563EB;
+  --accent-2: #38BDF8;
+  --shadow:0 16px 40px -22px rgba(0,0,0,.85);
+  --r:14px; --r-lg:22px; --r-pill:999px;
+  --pad:clamp(16px,4vw,32px); --maxw:1120px; --tap:48px;
+  --ease:cubic-bezier(.22,.8,.3,1);
+  --f-display:'Space Grotesk',system-ui,sans-serif; --f-body:'Inter',system-ui,sans-serif;
+  --tabh:66px; --safe:env(safe-area-inset-bottom,0px);
+}
+
+/* Base */
+*,*::before,*::after{box-sizing:border-box}
+body.has-tabs{padding-bottom:calc(var(--tabh) + var(--safe))}
+body{margin:0;padding:0;font-family:var(--f-body);background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--f-display);line-height:1.2;margin:0;font-weight:700}
+h1{font-size:clamp(2.4rem,6vw,4rem);letter-spacing:-.02em}
+h3{font-size:1.15rem}
+input,button,textarea,select{font:inherit;margin:0;border:none}
+
+.wrap{width:min(100% - 2*var(--pad),var(--maxw));margin-inline:auto}
+.section{padding:clamp(30px,5vw,56px) 0}
+.lede{color:var(--muted);max-width:60ch}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:14px;top:14px;z-index:300;background:var(--surface);padding:10px 16px;border-radius:10px}
+
+/* buttons */
+
+/* cards */
+.chip{display:inline-flex;align-items:center;gap:7px;padding:7px 15px;border-radius:var(--r-pill);font-size:.8rem;font-weight:600;background:color-mix(in srgb,var(--accent) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:24px}
+.wa-card{text-align:center;background:linear-gradient(150deg,color-mix(in srgb,var(--accent) 10%,var(--surface)),var(--surface));border-color:color-mix(in srgb,var(--accent) 25%,var(--border))}
+.wa-ico{width:56px;height:56px;border-radius:18px;background:var(--accent);color:#FFFFFF;display:grid;place-items:center;margin:0 auto 18px auto;box-shadow:0 12px 30px -10px var(--accent)}
+
+.info-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.info-row:last-of-type{border-bottom:none}
+.info-row span:first-child{color:var(--muted);font-weight:500}
+.info-row a:hover{color:var(--accent)}
+
+.socials-card{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.soc2{width:42px;height:42px;border-radius:12px;background:var(--surface-2);display:grid;place-items:center;color:var(--muted);transition:.2s}
+.soc2:hover{color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--surface-2))}
+
+/* layout */
+.layout{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:start}
+
+/* form */
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.86rem;font-weight:600;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;min-height:var(--tap);padding:12px 14px;border-radius:11px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);transition:border-color .2s}
+.field textarea{min-height:120px;resize:vertical;padding-top:12px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);outline:none}
+.field.err input,.field.err textarea{border-color:#EF4444}
+.err-msg{color:#EF4444;font-size:.8rem;margin-top:5px;display:none}
+.field.err .err-msg{display:block}
+.hp{position:absolute;left:-9999px;opacity:0}
+
+
+/* ==========================================================================
+   NAVBAR (Desktop)
+   ========================================================================== */
+
+/* ==========================================================================
+   MOBILE HEADER + BOTTOM TAB BAR
+   ========================================================================== */
+
+/* centre "Start" - sabse prominent action */
+
+/* Toasts */
+#pf-toasts{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tabh) + var(--safe) + 14px);z-index:130;display:grid;gap:8px;width:min(400px,calc(100vw - 32px))}
+.pf-toast{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);padding:13px 16px;border-radius:11px;font-size:.9rem;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);transition:.25s}
+.pf-toast.in{opacity:1;transform:none}
+.pf-toast--ok{border-left-color:#22C55E}
+.pf-toast--err{border-left-color:#EF4444}
+
+@media (min-width:768px){#pf-toasts{left:auto;right:22px;transform:none;bottom:86px}}
+@media (max-width:1000px){.layout{grid-template-columns:1fr}}
+
+/* Premium Dark Blue Navbar & Mobile Footer Overrides */
+
+/* Cohesive "Neon" Blue/Cyan Hovers */
+.soc, .soc2, .wa-float {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Footer layout fix */
+.foot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; }
+.foot-cols { display: flex; gap: 32px; }
+@media(max-width: 768px) { .foot-inner { flex-direction: column; } }
+
+</style>
+  <link rel="stylesheet" href="assets/navbar.css?v=2">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main">
+  <section class="section">
+    <div class="wrap">
+      <span class="chip">Contact</span>
+      <h1 style="margin-top:14px">Get in touch</h1>
+      <p class="lede" style="margin-top:12px">WhatsApp is the fastest. Or fill the form below, we'll reply usually within 30 minutes.</p>
+
+      <div class="layout" style="margin-top:30px">
+        <form class="card" id="contactForm" novalidate>
+          <h3 style="margin-bottom:18px">Send a message</h3>
+
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="field" data-f="name">
+            <label for="cName">Name</label>
+            <input id="cName" name="name" type="text" required autocomplete="name">
+            <span class="err-msg">Please enter your name</span>
+          </div>
+          
+          <div class="field" data-f="email">
+            <label for="cEmail">Email</label>
+            <input id="cEmail" name="email" type="email" required autocomplete="email">
+            <span class="err-msg">Please enter a valid email</span>
+          </div>
+
+          <div class="field" data-f="whatsapp">
+            <label for="cWa">WhatsApp Number</label>
+            <input id="cWa" name="whatsapp" type="tel" required autocomplete="tel" placeholder="10 digits">
+            <span class="err-msg">Please enter a valid number</span>
+          </div>
+
+          <div class="field" data-f="subject">
+            <label for="cSub">Subject</label>
+            <select id="cSub" name="subject" required>
+              <option value="" disabled selected>Select...</option>
+              <option value="New Project">Start a new project</option>
+              <option value="Maintenance">Website maintenance/update</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="err-msg">Please select a subject</span>
+          </div>
+
+          <div class="field" data-f="message">
+            <label for="cMsg">Message</label>
+            <textarea id="cMsg" name="message" required placeholder="Your message details..."></textarea>
+            <span class="err-msg">Message must be longer</span>
+          </div>
+
+          <button class="btn btn-primary btn-full" type="submit" id="sendBtn">Send Message</button>
+        </form>
+
+        <aside style="display:grid;gap:16px">
+          <div class="card wa-card">
+            <div class="wa-ico">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.3 4.8 4.93-1.3A9.9 9.9 0 1 0 12.04 2Zm5.77 14.1c-.24.68-1.4 1.3-1.94 1.35-.5.05-1.13.07-1.82-.11a16.5 16.5 0 0 1-6.6-5.05c-.5-.68-1.16-1.8-1.16-3s.63-1.8.86-2.05a.9.9 0 0 1 .65-.3h.47c.15 0 .35-.06.55.42l.75 1.83c.06.13.1.28 0 .45l-.3.46-.44.48c-.14.14-.29.3-.12.58.16.28.73 1.2 1.56 1.95 1.08.96 1.98 1.26 2.26 1.4.28.15.45.12.61-.07l.88-1.02c.2-.24.37-.18.62-.09l1.76.83c.25.12.42.18.48.28.06.1.06.6-.18 1.28Z"/>
+              </svg>
+            </div>
+            <h3>Fastest response</h3>
+            <p style="color:var(--muted);font-size:.9rem">Usually replies in ~30 minutes</p>
+            <a class="btn btn-primary btn-full" id="waBtn" target="_blank" rel="noopener">Open WhatsApp</a>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-bottom:12px">Details</h3>
+            <div class="info-row"><span>Email</span><span id="infoEmail"></span></div>
+            <div class="info-row"><span>Hours</span><span id="infoHours"></span></div>
+            <div class="info-row"><span>Reply time</span><span>~30 min</span></div>
+            <div class="socials-card" id="socialsCard"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+<script type="module" src="./contact.js"></script>
+</body>
+</html>

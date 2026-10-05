@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- admin/login.html — Supabase Auth email+password. No sidebar (not logged in yet). -->
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin login — PixelForge</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --accent:#A3E635; --accent-2:#38BDF8;
+  --bg:#0A0A0F; --surface:#13131E; --surface-2:#1B1B29;
+  --text:#EDEDF2; --muted:#9A9AB2; --border:rgba(255,255,255,.09);
+  --r:14px; --r-pill:999px;
+  --f-display:'Space Grotesk',system-ui,sans-serif; --f-body:'Inter',system-ui,sans-serif;
+}
+[data-theme="light"]{--bg:#F5F6FA;--surface:#FFFFFF;--surface-2:#F0F1F6;--text:#12121B;--muted:#666B80;--border:rgba(10,10,30,.1)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--text);
+  font-family:var(--f-body);padding:20px}
+h1{font-family:var(--f-display);font-size:1.3rem;margin:0 0 4px}
+p{margin:0;color:var(--muted);font-size:.88rem}
+.card{width:100%;max-width:380px;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:30px 26px;box-shadow:0 20px 50px -30px rgba(0,0,0,.6)}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.82rem;font-weight:600;margin-bottom:6px}
+.field input{width:100%;min-height:44px;padding:10px 13px;border-radius:10px;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--text);font-size:.9rem}
+.field input:focus{border-color:var(--accent);outline:none}
+.err{background:color-mix(in srgb,#EF4444 14%,transparent);border:1px solid color-mix(in srgb,#EF4444 40%,transparent);
+  color:#EF4444;font-size:.83rem;padding:10px 13px;border-radius:9px;margin-bottom:16px;display:none}
+.err.show{display:block}
+.back{display:block;text-align:center;margin-top:18px;color:var(--muted);font-size:.83rem;text-decoration:none}
+.back:hover{color:var(--accent)}
+
+</style>
+
+<style id="footer-layout-fix">
+
+.foot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; }
+.foot-cols { display: flex; gap: 32px; }
+@media(max-width: 768px) { .foot-inner { flex-direction: column; } }
+
+</style>
+
+<style id="super-neon-fix">
+
+.soc, .soc2, .wa-float {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.soc:hover, .soc2:hover {
+  background: #00FF66 !important;
+  color: #000000 !important;
+  border: 3px solid #00FF66 !important;
+  box-shadow: 0 0 15px rgba(0,255,102,0.6), 0 0 30px rgba(0,255,102,0.4) !important;
+  transform: translateY(-5px) scale(1.15) !important;
+}
+.wa-float:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 20px rgba(37,211,102,0.8), 0 0 40px rgba(37,211,102,0.6) !important;
+}
+
+</style>
+  <link rel="stylesheet" href="assets/navbar.css?v=2">
+</head>
+<body>
+<div class="card">
+  <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">PixelForge admin</span></div>
+  <h1>Sign in</h1>
+  <p style="margin-bottom:22px">Log in to your admin account.</p>
+
+  <div class="err" id="errBox"></div>
+
+  <form id="loginForm">
+    <div class="field">
+      <label for="lEmail">Email</label>
+      <input id="lEmail" type="email" required autocomplete="email">
+    </div>
+    <div class="field">
+      <label for="lPass">Password</label>
+      <input id="lPass" type="password" required autocomplete="current-password">
+    </div>
+    <button class="btn btn-primary btn-full" type="submit" id="loginBtn">Login</button>
+  </form>
+
+  <a class="back" href="index.html">← Back to website</a>
+</div>
+<script type="module" src="login.js" defer></script>
+</body>
+</html>

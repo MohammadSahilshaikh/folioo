@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<!-- index.html - Home. Sirf 6 sections. Mobile pe neeche tab bar, desktop pe top nav. -->
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PixelForge - Get your portfolio website. See the demo first, pay later.</title>
+<meta name="description" content="We build your portfolio or business website. 50% payment after seeing the demo, 50% at hosting. Zero advance.">
+<meta name="theme-color" content="#0A0A0F">
+<link rel="canonical" href="https://your-domain.com/">
+<meta property="og:title" content="PixelForge - See the demo first, pay later">
+<meta property="og:description" content="Portfolio websites 3–5 days me. Pehle demo dekhiye, phir payment.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ==========================================================================
+   1. TOKENS - index page accent: cyan + violet
+   ========================================================================== */
+:root{
+  --accent:#10E372;
+  --accent-2:#0B9B4F;
+
+  --bg:#1E1E24;
+  --surface:#25262C;
+  --surface-2:#2D2E35;
+  --text:#F9FAFB;
+  --muted:#9CA3AF;
+  --border:rgba(255,255,255,0.06);
+  --shadow:0 16px 40px -22px rgba(0,0,0,.85);
+
+  --r:14px; --r-lg:22px; --r-pill:999px;
+  --pad:clamp(16px,4vw,32px);
+  --maxw:1120px;
+  --tap:48px;                        /* minimum touch target */
+  --ease:cubic-bezier(.22,.8,.3,1);
+
+  --f-display:'Space Grotesk',system-ui,sans-serif;
+  --f-body:'Inter',system-ui,-apple-system,sans-serif;
+
+  --tabh:66px;                       /* mobile tab bar height */
+  --safe:env(safe-area-inset-bottom,0px);
+}
+[data-theme="light"]{
+  --accent:#10E372; --accent-2:#0B9B4F;
+  --bg:#F6F9FF; --surface:#FFFFFF; --surface-2:#F3F4F6;
+  --text:#111827; --muted:#6B7280; --border:rgba(0,0,0,0.08);
+  --shadow:0 14px 36px -24px rgba(20,20,60,.32);
+}
+
+/* ==========================================================================
+   2. BASE
+   ========================================================================== */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--f-body);font-size:16px;line-height:1.65;font-weight:400;
+  overflow-x:hidden;transition:background .25s var(--ease),color .25s var(--ease);
+}
+body.has-tabs{padding-bottom:calc(var(--tabh) + var(--safe))}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;margin:0;font-weight:900;letter-spacing:-.02em}
+h1{font-size:clamp(2rem,5.4vw,3.5rem)}
+h2{font-size:clamp(1.55rem,3.2vw,2.3rem)}
+h3{font-size:clamp(1.05rem,1.7vw,1.22rem)}
+p{margin:0 0 1rem;font-weight:400}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+::selection{background:var(--accent);color:#05050A;font-weight:900}
+
+.wrap{width:min(100% - 2*var(--pad), 1120px);margin-inline:auto}
+.section{padding:clamp(32px,5vw,64px) 0}
+.lede{color:var(--muted);max-width:60ch}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:14px;top:14px;z-index:300;background:var(--surface);
+  padding:10px 16px;border-radius:10px}
+
+/* ==========================================================================
+   3. CANVAS
+   ========================================================================== */
+.pf-canvas{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.3}
+
+/* ==========================================================================
+   4. DESKTOP TOP NAV
+   ========================================================================== */
+
+/* ==========================================================================
+   5. MOBILE HEADER + BOTTOM TAB BAR
+   ========================================================================== */
+
+/* centre "Start" - sabse prominent action */
+
+/* ==========================================================================
+   6. BUTTONS - bade, tap-friendly
+   ========================================================================== */
+
+/* ==========================================================================
+   7. BRAND / CHIP / CARD
+   ========================================================================== */
+
+.chip{display:inline-flex;align-items:center;gap:7px;padding:7px 15px;
+  border-radius:var(--r-pill);font-size:.8rem;font-weight:400;
+  background:color-mix(in srgb,var(--accent) 10%,var(--surface));
+  border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);color:var(--accent)}
+
+.card{background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:22px;
+  transition:transform .22s var(--ease),border-color .22s var(--ease)}
+@media (hover:hover){
+  .card:hover{transform:translateY(-4px);
+    border-color:color-mix(in srgb,var(--accent) 40%,transparent)}
+}
+
+.grad{background:linear-gradient(96deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ==========================================================================
+   8. REVEAL (halka, ek hi tarah ka)
+   ========================================================================== */
+.reveal{opacity:0;transform:translateY(16px);
+  transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.07s}
+.reveal[data-d="2"]{transition-delay:.14s}
+.reveal[data-d="3"]{transition-delay:.21s}
+
+/* ==========================================================================
+   9. HERO
+   ========================================================================== */
+.hero{padding:clamp(40px,7vw,86px) 0 clamp(28px,4vw,48px)}
+.hero h1{margin:18px 0 0}
+.hero-sub{margin-top:18px;color:var(--muted);font-size:clamp(1rem,1.4vw,1.1rem);max-width:52ch;font-weight:700}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.fact{font-size:.82rem;color:var(--muted);padding:7px 13px;border-radius:var(--r-pill);
+  background:var(--surface);border:1px solid var(--border);font-weight:700}
+.fact b{color:var(--text);font-family:var(--f-display);font-weight:800}
+
+/* ========================================================================== 
+   10. OFFER - page ka main message, 3 simple steps
+   ========================================================================== */
+.offer-box{border-radius:var(--r-lg);padding:clamp(22px,4vw,40px);
+  border:1px solid color-mix(in srgb,var(--accent) 28%,var(--border));
+  background:radial-gradient(600px 220px at 20% 0%,
+    color-mix(in srgb,var(--accent) 11%,transparent),transparent 70%),var(--surface)}
+.offer-box h2{margin-bottom:12px}
+
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+.fstep{background:var(--surface-2);border:1px solid var(--border);
+  border-radius:var(--r);padding:20px;position:relative}
+.fstep .n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--f-display);font-weight:700;font-size:.85rem;color:#05050A;
+  background:linear-gradient(140deg,var(--accent),var(--accent-2))}
+.fstep .pay{font-family:var(--f-display);font-size:1.5rem;margin:12px 0 6px;
+  background:linear-gradient(96deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.fstep h3{font-size:1rem;margin-bottom:6px}
+.fstep p{color:var(--muted);font-size:.9rem;margin:0}
+
+.notes{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.notes span{font-size:.82rem;color:var(--muted);padding:6px 13px;
+  border-radius:var(--r-pill);background:var(--surface-2);border:1px solid var(--border)}
+
+/* ==========================================================================
+   11. GRIDS + SECTION HEADS
+   ========================================================================== */
+.grid{display:grid;gap:14px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.head{margin-bottom:clamp(24px,4vw,40px)}
+.head h2{margin-bottom:10px}
+.after{margin-top:22px}
+
+/* plans */
+.plan .amt{font-family:var(--f-display);font-size:2rem;line-height:1}
+.plan .old{color:var(--muted);text-decoration:line-through;font-size:.95rem;margin-left:7px}
+.plan .meta{color:var(--muted);font-size:.85rem;margin:2px 0 0}
+.plan .split{font-size:.82rem;color:var(--muted);background:var(--surface-2);
+  border:1px dashed var(--border);border-radius:10px;padding:10px 12px;margin:14px 0}
+.plan ul{list-style:none;padding:0;margin:0 0 18px;display:grid;gap:8px}
+.plan li{color:var(--muted);font-size:.9rem;padding-left:22px;position:relative}
+.plan li::before{content:'';position:absolute;left:0;top:.55em;width:12px;height:12px;
+  border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--accent)}
+.plan.popular{border-color:var(--accent)}
+.plan .tagline{margin-bottom:14px}
+
+/* work */
+.work{padding:0;overflow:hidden}
+.work-thumb{aspect-ratio:16/10;background:var(--surface-2)}
+.work-thumb img{width:100%;height:100%;object-fit:cover;}
+.work-thumb img.img-ready{opacity:1}
+.work-body{padding:18px 20px 22px}
+.work-body h3{margin-bottom:6px;font-size:1rem}
+.work-body p{color:var(--muted);font-size:.88rem;margin:0 0 14px}
+
+/* reviews - mobile pe swipe, desktop pe grid */
+.rail{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card.rev { padding: 32px 28px !important; border-radius: 16px !important; }
+  .rev .stars{color:var(--accent);letter-spacing:4px;font-size:1.15rem;margin-bottom:24px}
+.rev p{margin:0 0 32px;font-size:1.05rem;line-height:1.7;font-weight:600;color:var(--text)}
+.rev-who{display:flex;align-items:center;gap:14px}
+.avatar{width:46px;height:46px;font-size:1.1rem;border-radius:50%;flex:none;display:grid;place-items:center;
+  font-family:var(--f-display);font-weight:700;color:#05050A;
+  background:linear-gradient(140deg,var(--accent),var(--accent-2))}
+.rev-who b{display:block;font-size:1rem;font-weight:700}
+.rev-who small{color:var(--muted);font-size:.85rem;margin-top:2px;display:block}
+
+/* faq */
+.faq details{border-bottom:1px solid var(--border)}
+.faq details:first-child{border-top:1px solid var(--border)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 38px 18px 0;position:relative;
+  font-family:var(--f-display);font-weight:400;font-size:1rem;min-height:var(--tap)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'';position:absolute;right:8px;top:calc(50% - 5px);
+  width:9px;height:9px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);
+  transform:rotate(45deg);transition:transform .22s var(--ease)}
+.faq details[open] summary::after{transform:rotate(-135deg)}
+.faq .ans{color:var(--muted);font-size:.93rem;padding:0 34px 20px 0;margin:0}
+
+/* cta */
+.cta{border-radius:var(--r-lg);padding:clamp(28px,5vw,52px);text-align:center;
+  border:1px solid color-mix(in srgb,var(--accent) 26%,var(--border));
+  background:radial-gradient(520px 200px at 50% 0%,
+    color-mix(in srgb,var(--accent-2) 14%,transparent),transparent 70%),var(--surface)}
+.cta h2{margin-bottom:10px}
+.cta .lede{margin:0 auto 24px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ==========================================================================
+   12. FOOTER
+   ========================================================================== */
+.pf-footer{border-top:1px solid var(--border);margin-top:40px}
+.foot-inner{width:min(100% - 2*var(--pad), 1120px);margin-inline:auto;
+  display:grid;grid-template-columns:1.3fr 2fr;gap:36px;padding:48px 0 30px}
+.foot-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.foot-h{font-size:.8rem;margin:0 0 12px;font-family:var(--f-display)}
+.foot-muted{display:block;color:var(--muted);font-size:.89rem;padding:6px 0}
+.foot-line{color:var(--muted);font-size:.89rem;margin:12px 0 16px;max-width:32ch}
+.socials{display:flex;gap:8px;flex-wrap:wrap}
+.soc{width:38px;height:38px;display:grid !important;place-items:center;border-radius:10px;
+  background:var(--surface-2);border:1px solid var(--border);color:var(--muted);padding:0 !important}
+.soc:hover{color:var(--accent);border-color:var(--accent)}
+.foot-bottom{width:min(100% - 2*var(--pad), 1120px);margin-inline:auto;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  padding:18px 0 28px;border-top:1px solid var(--border);color:var(--muted);font-size:.83rem}
+.foot-bottom a{color:var(--muted)}
+.foot-bottom a:hover{color:var(--accent)}
+
+/* ==========================================================================
+   13. FLOATING BITS
+   ========================================================================== */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:95;width:52px;height:52px;
+  border-radius:50%;display:grid;place-items:center;color:#05130C;
+  background:#25D366;box-shadow:0 10px 26px -10px rgba(37,211,102,.7);
+  transition:transform .2s var(--ease)}
+.wa-float:hover{transform:scale(1.07)}
+.wa-tip{position:absolute;right:62px;white-space:nowrap;background:var(--surface);
+  color:var(--text);border:1px solid var(--border);padding:7px 12px;border-radius:9px;
+  font-size:.81rem;opacity:0;pointer-events:none;transition:opacity .2s var(--ease)}
+.wa-float:hover .wa-tip{opacity:1}
+
+#pf-toasts{position:fixed;left:50%;transform:translateX(-50%);
+  bottom:calc(var(--tabh) + var(--safe) + 14px);z-index:130;
+  display:grid;gap:8px;width:min(400px,calc(100vw - 32px))}
+.pf-toast{background:var(--surface);border:1px solid var(--border);
+  border-left:3px solid var(--accent);padding:13px 16px;border-radius:11px;
+  font-size:.9rem;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);
+  transition:.25s var(--ease)}
+.pf-toast.in{opacity:1;transform:none}
+.pf-toast--ok{border-left-color:#22C55E}
+.pf-toast--err{border-left-color:#EF4444}
+
+#pf-offline{position:fixed;left:0;right:0;top:0;z-index:200;text-align:center;
+  background:#EF4444;color:#fff;font-size:.85rem;padding:8px}
+
+.skel{border-radius:var(--r);background:linear-gradient(100deg,
+  var(--surface) 30%,var(--surface-2) 50%,var(--surface) 70%);
+  background-size:220% 100%;animation:shine 1.3s linear infinite}
+@keyframes shine{to{background-position:-220% 0}}
+
+/* ==========================================================================
+   14. RESPONSIVE - phone / tablet / desktop
+   ========================================================================== */
+/* tablet */
+@media (max-width:1000px){
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .rail{grid-template-columns:repeat(2,1fr)}
+  .flow{grid-template-columns:1fr}
+  .foot-inner{grid-template-columns:1fr;gap:28px}
+}
+/* phone */
+@media (max-width:767px){
+  #pf-toasts{bottom:calc(var(--tabh) + var(--safe) + 14px)}
+  .g3{grid-template-columns:1fr}
+  /* reviews horizontal swipe - mobile pe zyada natural lagta hai */
+  .rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding-bottom:8px;margin-inline:calc(-1*var(--pad));
+    padding-inline:var(--pad);scrollbar-width:none}
+  .rail::-webkit-scrollbar{display:none}
+  .rail>*{flex:0 0 min(300px,82vw);scroll-snap-align:start}
+  .foot-cols{grid-template-columns:1fr 1fr}
+  .section{padding:24px 0}
+  .card{padding:16px}
+  .hero{padding:24px 0 20px}
+}
+@media (max-width:420px){
+  .foot-cols{grid-template-columns:1fr}
+}
+/* desktop: toast right side */
+@media (min-width:768px){
+  #pf-toasts{left:auto;right:22px;transform:none;bottom:86px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;scroll-behavior:auto !important}
+  .reveal{opacity:1;transform:none}
+}
+
+  /* Social Media Neon Hovers */
+  .soc, .soc2, .wa-float {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, color 0.3s ease, background 0.3s ease !important;
+  }
+  .soc:hover, .soc2:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.5), 0 0 25px rgba(0, 255, 102, 0.3) !important;
+    border-color: #00FF66 !important;
+    color: #00FF66 !important;
+    background: #000000 !important; /* Dark background to make neon pop */
+    transform: translateY(-4px) !important;
+  }
+  .wa-float:hover {
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.8), 0 0 40px rgba(37, 211, 102, 0.6) !important;
+    transform: scale(1.12) !important;
+  }
+
+
+</style>
+
+<style id="custom-theme-overrides">
+
+
+  /* Missing Base CSS Fixes for Pages (Buttons & Links) */
+  .foot-bottom a { text-decoration: none !important; }
+
+
+
+  /* Premium Dark Blue Navbar */
+
+  /* Universal Light Mode (Clean & Cohesive) */
+  html[data-theme="light"] {
+    --bg: #E2E8F0; /* Soft, clean slate-50 background uniformly across all pages */
+    --surface: #FFFFFF;
+    --surface-2: #F1F5F9;
+    --text: #0F172A;
+    --muted: #475569;
+    --border: rgba(15,23,42,0.12);
+    --accent: #2563EB; /* Royal Blue */
+    --accent-2: #38BDF8; /* Bright Sky Blue */
+  }
+
+  /* Typography */
+  body {
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 1.02rem;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+    color: #020617;
+  }
+
+  /* Elegant Cards */
+  .card { 
+    background: #FFFFFF;
+    border: 1px solid rgba(15,23,42,0.1);
+    box-shadow: 0 8px 24px -6px rgba(0,0,0,0.08), 0 4px 10px -4px rgba(0,0,0,0.04); 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Cohesive "Neon" Blue/Cyan Hovers */
+  .card:hover {
+    box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.12);
+    border-color: rgba(37, 99, 235, 0.2);
+    transform: translateY(-4px);
+  }
+  
+  /* Text Links & Social Icons */
+  .soc, .soc2, .wa-float { transition: all 0.3s ease; }
+  .soc:hover, .soc2:hover {
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+    border-color: #2563EB;
+    color: #FFFFFF;
+    background: #2563EB;
+    transform: translateY(-3px);
+  }
+  .wa-float { background: #25D366; color: #FFFFFF; border: none; }
+  .wa-float:hover {
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+    transform: scale(1.1);
+  }
+
+  /* Visibility Fixes for Dark Text on Blue Backgrounds */
+  .avatar { color: #FFFFFF !important; }
+  .fstep .n { color: #FFFFFF !important; }
+  ::selection { background: #2563EB !important; color: #FFFFFF !important; }
+
+
+  /* Footer Links Attractive Hover Effect */
+  .foot-cols a {
+    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  .foot-cols a:hover {
+    color: var(--accent) !important;
+    transform: translateX(6px);
+    text-shadow: 0 0 12px rgba(37, 99, 235, 0.25);
+  }
+
+</style>
+
+<style id="footer-layout-fix">
+
+.foot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; }
+.foot-cols { display: flex; gap: 32px; }
+@media(max-width: 768px) { .foot-inner { flex-direction: column; } }
+
+</style>
+
+
+<style id="super-neon-fix">
+
+.soc, .soc2, .wa-float {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.soc:hover, .soc2:hover {
+  background: #00FF66 !important;
+  color: #000000 !important;
+  border: 3px solid #00FF66 !important;
+  box-shadow: 0 0 15px rgba(0,255,102,0.6), 0 0 30px rgba(0,255,102,0.4) !important;
+  transform: translateY(-5px) scale(1.15) !important;
+}
+.wa-float:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 20px rgba(37,211,102,0.8), 0 0 40px rgba(37,211,102,0.6) !important;
+}
+
+</style>
+  <link rel="stylesheet" href="assets/navbar.css?v=2">
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="chip reveal">Zero advance - see the demo first</span>
+      <h1 class="reveal" data-d="1">
+        Your website, built right.<br>
+        Pay only after you <span class="grad">approve</span> it.
+      </h1>
+      <p class="hero-sub reveal" data-d="2">
+        We build a fully working live demo of your website first. Open it on your phone and explore it.
+        Pay only if you love it.
+      </p>
+      <div class="hero-cta reveal" data-d="3">
+        <a class="btn btn-primary btn-lg" href="order.html">Start your site</a>
+        <a class="btn btn-lg" href="work.html">View live demos</a>
+      </div>
+      <div class="hero-facts reveal" data-d="3">
+        <span class="fact"><b data-count="120" data-suffix="+">0</b> sites delivered</span>
+        <span class="fact"><b data-count="4.9" data-suffix="/5">0</b> rating</span>
+        <span class="fact"><b>3–5 days</b> delivery</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 50/50 OFFER ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="offer-box reveal">
+        <h2>Payment in two simple halves</h2>
+        <p class="lede">The biggest fear with online work - you pay, and get nothing.
+          So we tied payment to progress.</p>
+
+        <div class="flow">
+          <article class="fstep">
+            <span class="n">1</span>
+            <div class="pay">₹0</div>
+            <h3>When you order</h3>
+            <p>Fill the form. Not a single rupee upfront.</p>
+          </article>
+          <article class="fstep">
+            <span class="n">2</span>
+            <div class="pay">50%</div>
+            <h3>After seeing the demo</h3>
+            <p>You get a live link. Browse it yourself - pay 50% only if you like it.</p>
+          </article>
+          <article class="fstep">
+            <span class="n">3</span>
+            <div class="pay">50%</div>
+            <h3>At hosting</h3>
+            <p>Changes done, you approve - then the remaining 50%.</p>
+          </article>
+        </div>
+
+        <div class="notes">
+          <span>Demo is free</span>
+          <span>No payment if you don't like it</span>
+          <span>Unlimited revisions on demo</span>
+          <span>Zero markup on domain & hosting costs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- ============ WORK ============ -->
+  <section class="section" id="workSection">
+    <div class="wrap">
+      <div class="head reveal" style="text-align:center">
+        <div style="display:flex;justify-content:center;margin-bottom:12px"><span class="chip">PORTFOLIO</span></div>
+        <h2 style="font-size:2.4rem">Latest Work</h2>
+        <p class="lede">Showcasing my recent projects and creative endeavors</p>
+      </div>
+      <div class="grid g3" id="workGrid"></div>
+      <div class="after" style="text-align:center"><a class="btn btn-primary" style="padding:11px 26px" href="work.html">View All Work &rarr;</a></div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="section" id="revSection">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>What our clients say</h2>
+        <p class="lede">All reviews are from real orders.</p>
+      </div>
+      <div class="rail" id="revRail"></div>
+      <div class="after"><a class="btn" href="reviews.html">Read all reviews</a></div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Frequently asked questions</h2>
+        <p class="lede">Didn't find your answer? Ask us on WhatsApp.</p>
+      </div>
+      <div class="faq reveal" data-d="1" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="cta reveal">
+        <h2>Order today, get your demo in 2 days</h2>
+        <p class="lede">Nothing to pay right now. Takes just 5 minutes to fill the form.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary btn-lg" href="order.html">Start your site</a>
+          </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"PixelForge",
+"description":"Portfolio and business website development. 50% payment after demo, 50% on hosting.",
+"areaServed":"IN","priceRange":"₹₹",
+"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"120"}}
+</script>
+
+<script type="module" src="./index.js"></script>
+</body>
+</html>

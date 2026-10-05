@@ -1,0 +1,4 @@
+node_modules/
+_admin_scratch_backup_/
+.env
+.DS_Store

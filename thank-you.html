@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!-- thank-you.html - post-order confirmation. Accent: rose + indigo. -->
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Order received! - PixelForge</title>
+<meta property="og:title" content="Order received! - PixelForge">
+<meta property="og:description" content="Professional portfolio and business website builder.">
+<meta property="og:image" content="https://your-domain.com/assets/og-image.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A0A0F">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --accent:#10E372; --accent-2:#0B9B4F;
+  --bg:#1E1E24; --surface:#25262C; --surface-2:#2D2E35;
+  --text:#F9FAFB; --muted:#9CA3AF; --border:rgba(255,255,255,0.06);
+  --shadow:0 16px 40px -22px rgba(0,0,0,.85);
+  --r:14px; --r-pill:999px; --pad:clamp(16px,4vw,32px); --tap:48px;
+  --ease:cubic-bezier(.22,.8,.3,1);
+  --f-display:'Space Grotesk',system-ui,sans-serif; --f-body:'Inter',system-ui,sans-serif;
+  --tabh:66px; --safe:env(safe-area-inset-bottom,0px);
+}
+[data-theme="light"]{
+  --accent:#10E372; --accent-2:#0B9B4F;--bg:#FAFAFB;--surface:#FFFFFF;--surface-2:#F3F4F6;--text:#111827;--muted:#6B7280;--border:rgba(0,0,0,0.08)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);line-height:1.65}
+body.has-tabs{padding-bottom:calc(var(--tabh) + var(--safe))}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+h1,h2{font-family:var(--f-display);margin:0;font-weight:400;letter-spacing:-.02em}
+h1{font-size:clamp(1.6rem,4.4vw,2.2rem)}
+.wrap{width:min(100% - 2*var(--pad),640px);margin-inline:auto;padding:clamp(50px,10vw,100px) 0;text-align:center}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:26px;margin-top:26px;text-align:left}
+.check{width:74px;height:74px;border-radius:50%;margin:0 auto 20px;display:grid;place-items:center;
+  background:linear-gradient(140deg,var(--accent),var(--accent-2))}
+.tid{font-family:var(--f-display);font-size:1.4rem;background:var(--surface-2);border:1px dashed var(--border);
+  border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
+.tid button{background:none;border:none;color:var(--accent);font-size:.85rem;font-weight:700;cursor:pointer}
+.steps li{margin-bottom:10px;color:var(--muted);font-size:.92rem}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+#pf-toasts{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tabh) + var(--safe) + 14px);z-index:130;display:grid;gap:8px;width:min(400px,calc(100vw - 32px))}
+.pf-toast{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);padding:13px 16px;border-radius:11px;font-size:.9rem;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);transition:.25s}
+.pf-toast.in{opacity:1;transform:none}
+.pf-toast--ok{border-left-color:#22C55E}
+@media (min-width:768px){#pf-toasts{left:auto;right:22px;transform:none;bottom:24px}}
+
+  /* Social Media Neon Hovers */
+  .soc, .soc2, .wa-float {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, color 0.3s ease, background 0.3s ease !important;
+  }
+  .soc:hover, .soc2:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.5), 0 0 25px rgba(0, 255, 102, 0.3) !important;
+    border-color: #00FF66 !important;
+    color: #00FF66 !important;
+    background: #000000 !important; /* Dark background to make neon pop */
+    transform: translateY(-4px) !important;
+  }
+  .wa-float:hover {
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.8), 0 0 40px rgba(37, 211, 102, 0.6) !important;
+    transform: scale(1.12) !important;
+  }
+
+
+</style>
+
+<style id="custom-theme-overrides">
+
+
+  /* Missing Base CSS Fixes for Pages (Buttons & Links) */
+  .foot-bottom a { text-decoration: none !important; }
+
+
+
+  /* Premium Dark Blue Navbar */
+
+  /* Universal Light Mode (Clean & Cohesive) */
+  html[data-theme="light"] {
+    --bg: #E2E8F0; /* Soft, clean slate-50 background uniformly across all pages */
+    --surface: #FFFFFF;
+    --surface-2: #F1F5F9;
+    --text: #0F172A;
+    --muted: #475569;
+    --border: rgba(15,23,42,0.12);
+    --accent: #2563EB; /* Royal Blue */
+    --accent-2: #38BDF8; /* Bright Sky Blue */
+  }
+
+  /* Typography */
+  body {
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 1.02rem;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+    color: #020617;
+  }
+
+  /* Elegant Cards */
+  .card { 
+    background: #FFFFFF;
+    border: 1px solid rgba(15,23,42,0.1);
+    box-shadow: 0 8px 24px -6px rgba(0,0,0,0.08), 0 4px 10px -4px rgba(0,0,0,0.04); 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Cohesive "Neon" Blue/Cyan Hovers */
+  .card:hover {
+    box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.12);
+    border-color: rgba(37, 99, 235, 0.2);
+    transform: translateY(-4px);
+  }
+  
+  /* Text Links & Social Icons */
+  .soc, .soc2, .wa-float { transition: all 0.3s ease; }
+  .soc:hover, .soc2:hover {
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+    border-color: #2563EB;
+    color: #FFFFFF;
+    background: #2563EB;
+    transform: translateY(-3px);
+  }
+  .wa-float { background: #25D366; color: #FFFFFF; border: none; }
+  .wa-float:hover {
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+    transform: scale(1.1);
+  }
+
+  /* Visibility Fixes for Dark Text on Blue Backgrounds */
+  .avatar { color: #FFFFFF !important; }
+  .fstep .n { color: #FFFFFF !important; }
+  ::selection { background: #2563EB !important; color: #FFFFFF !important; }
+
+
+  /* Footer Links Attractive Hover Effect */
+  .foot-cols a {
+    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  .foot-cols a:hover {
+    color: var(--accent) !important;
+    transform: translateX(6px);
+    text-shadow: 0 0 12px rgba(37, 99, 235, 0.25);
+  }
+
+</style>
+
+<style id="footer-layout-fix">
+
+.foot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; }
+.foot-cols { display: flex; gap: 32px; }
+@media(max-width: 768px) { .foot-inner { flex-direction: column; } }
+
+</style>
+
+<style id="super-neon-fix">
+
+.soc, .soc2, .wa-float {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.soc:hover, .soc2:hover {
+  background: #00FF66 !important;
+  color: #000000 !important;
+  border: 3px solid #00FF66 !important;
+  box-shadow: 0 0 15px rgba(0,255,102,0.6), 0 0 30px rgba(0,255,102,0.4) !important;
+  transform: translateY(-5px) scale(1.15) !important;
+}
+.wa-float:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 20px rgba(37,211,102,0.8), 0 0 40px rgba(37,211,102,0.6) !important;
+}
+
+</style>
+  <link rel="stylesheet" href="assets/navbar.css?v=2">
+</head>
+<body>
+<main>
+  <div class="wrap">
+    <div class="check">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 12.5 9.5 18 20 6" id="checkPath"/>
+      </svg>
+    </div>
+    <h1>Order received!</h1>
+    <p style="color:var(--muted);margin-top:10px">We will contact you on WhatsApp within 24 hours.</p>
+
+    <div class="card">
+      <div style="font-size:.85rem;color:var(--muted);font-weight:600">Your Tracking ID</div>
+      <div class="tid"><span id="tid">-</span><button id="copyTid" type="button">Copy</button></div>
+
+      <ul class="steps" style="margin-top:20px;padding-left:18px">
+        <li>We review your details and build the demo in 3–5 days</li>
+        <li>Once the demo is ready, you'll get a live link on WhatsApp</li>
+        <li>You review it - if you love it, pay the first 50%</li>
+        <li>After final changes and your approval, the site goes live - then the remaining 50%</li>
+      </ul>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary" id="waLink" target="_blank" rel="noopener">Get updates on WhatsApp</a>
+      <a class="btn" href="track.html">Track your order</a>
+      <a class="btn" href="work.html">See more demos</a>
+    </div>
+  </div>
+</main>
+<script type="module" src="./thank-you.js"></script>
+</body>
+</html>
