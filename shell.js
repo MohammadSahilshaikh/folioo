@@ -1,6 +1,6 @@
 // shell.js — sab admin pages ka common chrome: auth guard, sidebar, topbar, theme, logout.
-import { CONFIG } from '../config.js';
-import { adminCurrentProfile, adminSignOut } from '../supabase-client.js';
+import { CONFIG } from './config.js';
+import { adminCurrentProfile, adminSignOut } from './supabase-client.js';
 
 const NAV = [
   ['dashboard.html', 'Dashboard', 'grid'],
